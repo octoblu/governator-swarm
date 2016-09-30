@@ -34,33 +34,6 @@
 			"notests": true
 		},
 		{
-			"importpath": "github.com/coreos/etcd/client",
-			"repository": "https://github.com/coreos/etcd",
-			"vcs": "git",
-			"revision": "336e4f2f28799d901bd76f58372dc274fd45d777",
-			"branch": "master",
-			"path": "/client",
-			"notests": true
-		},
-		{
-			"importpath": "github.com/coreos/etcd/pkg/pathutil",
-			"repository": "https://github.com/coreos/etcd",
-			"vcs": "git",
-			"revision": "336e4f2f28799d901bd76f58372dc274fd45d777",
-			"branch": "master",
-			"path": "/pkg/pathutil",
-			"notests": true
-		},
-		{
-			"importpath": "github.com/coreos/etcd/pkg/types",
-			"repository": "https://github.com/coreos/etcd",
-			"vcs": "git",
-			"revision": "336e4f2f28799d901bd76f58372dc274fd45d777",
-			"branch": "master",
-			"path": "/pkg/types",
-			"notests": true
-		},
-		{
 			"importpath": "github.com/coreos/go-semver",
 			"repository": "https://github.com/coreos/go-semver",
 			"vcs": "git",
@@ -87,75 +60,21 @@
 			"notests": true
 		},
 		{
-			"importpath": "github.com/docker/docker/api/types",
-			"repository": "https://github.com/docker/docker",
+			"importpath": "github.com/docker/engine-api/client",
+			"repository": "https://github.com/docker/engine-api",
 			"vcs": "git",
-			"revision": "97660c6ec55f45416cb2b2d4c116267864b62b65",
-			"branch": "master",
-			"path": "api/types",
-			"notests": true
-		},
-		{
-			"importpath": "github.com/docker/docker/client",
-			"repository": "https://github.com/docker/docker",
-			"vcs": "git",
-			"revision": "97660c6ec55f45416cb2b2d4c116267864b62b65",
+			"revision": "4290f40c056686fcaa5c9caf02eac1dde9315adf",
 			"branch": "master",
 			"path": "/client",
 			"notests": true
 		},
 		{
-			"importpath": "github.com/docker/docker/pkg/jsonlog",
-			"repository": "https://github.com/docker/docker",
+			"importpath": "github.com/docker/engine-api/types",
+			"repository": "https://github.com/docker/engine-api",
 			"vcs": "git",
-			"revision": "97660c6ec55f45416cb2b2d4c116267864b62b65",
+			"revision": "4290f40c056686fcaa5c9caf02eac1dde9315adf",
 			"branch": "master",
-			"path": "pkg/jsonlog",
-			"notests": true
-		},
-		{
-			"importpath": "github.com/docker/docker/pkg/jsonmessage",
-			"repository": "https://github.com/docker/docker",
-			"vcs": "git",
-			"revision": "97660c6ec55f45416cb2b2d4c116267864b62b65",
-			"branch": "master",
-			"path": "pkg/jsonmessage",
-			"notests": true
-		},
-		{
-			"importpath": "github.com/docker/docker/pkg/progress",
-			"repository": "https://github.com/docker/docker",
-			"vcs": "git",
-			"revision": "97660c6ec55f45416cb2b2d4c116267864b62b65",
-			"branch": "master",
-			"path": "pkg/progress",
-			"notests": true
-		},
-		{
-			"importpath": "github.com/docker/docker/pkg/streamformatter",
-			"repository": "https://github.com/docker/docker",
-			"vcs": "git",
-			"revision": "97660c6ec55f45416cb2b2d4c116267864b62b65",
-			"branch": "master",
-			"path": "pkg/streamformatter",
-			"notests": true
-		},
-		{
-			"importpath": "github.com/docker/docker/pkg/term",
-			"repository": "https://github.com/docker/docker",
-			"vcs": "git",
-			"revision": "97660c6ec55f45416cb2b2d4c116267864b62b65",
-			"branch": "master",
-			"path": "pkg/term",
-			"notests": true
-		},
-		{
-			"importpath": "github.com/docker/docker/pkg/tlsconfig",
-			"repository": "https://github.com/docker/docker",
-			"vcs": "git",
-			"revision": "97660c6ec55f45416cb2b2d4c116267864b62b65",
-			"branch": "master",
-			"path": "pkg/tlsconfig",
+			"path": "types",
 			"notests": true
 		},
 		{
@@ -164,7 +83,7 @@
 			"vcs": "git",
 			"revision": "988efe982fdecb46f01d53465878ff1f2ff411ce",
 			"branch": "master",
-			"path": "/nat",
+			"path": "nat",
 			"notests": true
 		},
 		{
@@ -182,7 +101,7 @@
 			"vcs": "git",
 			"revision": "988efe982fdecb46f01d53465878ff1f2ff411ce",
 			"branch": "master",
-			"path": "tlsconfig",
+			"path": "/tlsconfig",
 			"notests": true
 		},
 		{
@@ -250,15 +169,6 @@
 			"vcs": "git",
 			"revision": "56b76bdf51f7708750eac80fa38b952bb9f32639",
 			"branch": "master",
-			"notests": true
-		},
-		{
-			"importpath": "github.com/octoblu/go-simple-etcd-client/etcdclient",
-			"repository": "https://github.com/octoblu/go-simple-etcd-client",
-			"vcs": "git",
-			"revision": "83ea6cb2f60988064a9c0695170c3b3ddbdabaad",
-			"branch": "master",
-			"path": "/etcdclient",
 			"notests": true
 		},
 		{

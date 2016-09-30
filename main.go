@@ -3,33 +3,35 @@ package main
 import (
 	"fmt"
 	"log"
+	"net/url"
 	"os"
 	"os/signal"
+	"strings"
 	"syscall"
 	"time"
 
 	"github.com/codegangsta/cli"
 	"github.com/coreos/go-semver/semver"
-	"github.com/docker/docker/client"
+	"github.com/docker/engine-api/client"
 	"github.com/fatih/color"
 	"github.com/garyburd/redigo/redis"
 	"github.com/octoblu/governator-swarm/deployer"
 	De "github.com/tj/go-debug"
 )
 
-var debug = De.Debug("governator:main")
+var debug = De.Debug("governator-swarm:main")
 
 func main() {
 	app := cli.NewApp()
-	app.Name = "governator"
+	app.Name = "governator-swarm"
 	app.Version = version()
 	app.Action = run
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
-			Name:    "docker-uri, d",
-			EnvVar:  "GOVERNATOR_DOCKER_URI",
-			Usage:   "Docker server to deploy to",
-			Default: "unix:///var/run/docker.sock",
+			Name:   "docker-uri, d",
+			EnvVar: "GOVERNATOR_DOCKER_URI",
+			Usage:  "Docker server to deploy to",
+			Value:  "unix:///var/run/docker.sock",
 		},
 		cli.StringFlag{
 			Name:   "redis-uri, r",
@@ -90,7 +92,7 @@ func run(context *cli.Context) {
 }
 
 func getOpts(context *cli.Context) (string, string, string, string, string) {
-	dockerURI := context.String("etcd-uri")
+	dockerURI := context.String("docker-uri")
 	redisURI := context.String("redis-uri")
 	redisQueue := context.String("redis-queue")
 	deployStateURI := context.String("deploy-state-uri")
@@ -121,7 +123,8 @@ func getOpts(context *cli.Context) (string, string, string, string, string) {
 }
 
 func getDockerClient(dockerURI string) client.APIClient {
-	defaultHeaders := map[string]string{"User-Agent": "engine-api-cli-1.0"}
+	defaultHeaders := map[string]string{"User-Agent": "governator-swarm"}
+
 	dockerClient, err := client.NewClient(dockerURI, "v1.24", nil, defaultHeaders)
 	if err != nil {
 		panic(err)
@@ -135,6 +138,26 @@ func getRedisConn(redisURI string) redis.Conn {
 		log.Panicln("Error with redis.DialURL", err.Error())
 	}
 	return redisConn
+}
+
+// ParseHost verifies that the given host strings is valid.
+func ParseHost(host string) (string, string, string, error) {
+	protoAddrParts := strings.SplitN(host, "://", 2)
+	if len(protoAddrParts) == 1 {
+		return "", "", "", fmt.Errorf("unable to parse docker host `%s`", host)
+	}
+
+	var basePath string
+	proto, addr := protoAddrParts[0], protoAddrParts[1]
+	if proto == "tcp" {
+		parsed, err := url.Parse("tcp://" + addr)
+		if err != nil {
+			return "", "", "", err
+		}
+		addr = parsed.Host
+		basePath = parsed.Path
+	}
+	return proto, addr, basePath, nil
 }
 
 func version() string {
